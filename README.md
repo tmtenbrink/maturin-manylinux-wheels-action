@@ -21,7 +21,7 @@ This is a quite specific use case, but feel free to fork and adapt to your own n
 Minimal:
 
 ```yaml
-uses: tmtenbrink/python-wheels-manylinux-build@v1
+uses: tmtenbrink/python-wheels-manylinux-build@1.0.0
 with:
   python-versions: 'cp36-cp36m cp37-cp37m'
 ```
@@ -29,7 +29,7 @@ with:
 Using all arguments:
 
 ```yaml
-uses: tmtenbrink/python-wheels-manylinux-build@v1
+uses: tmtenbrink/python-wheels-manylinux-build@1.0.0
 with:
   py-version: '3.9'
   py-pep-425: 'cp39-cp39'
