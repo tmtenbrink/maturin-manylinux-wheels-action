@@ -1,16 +1,14 @@
-# action.yml
 name: 'Python wheels manylinux build'
-author: 'Ralf Gabriels'
-description: 'Build manylinux wheels for a (Cython) Python package'
+description: 'Build manylinux wheels for a Python package'
 inputs:
-  python-versions:
-    description: 'Python versions to target, space-separated'
+  py-version:
+    description: 'python version to target (e.g. 3.9)'
     required: true
-    default: 'cp36-cp36m cp37-cp37m cp38-cp38 cp39-cp39'
-  build-requirements:
-    description: 'pip packages required at build time, space-separated'
-    required: false
-    default: ''
+    default: '3.9'
+  py-pep-425:
+    description: 'Python version used to install tools (e.g. cp39-cp39)'
+    required: true
+    default: 'cp39-cp39'
   system-packages:
     description: 'yum packages to install, space-separated'
     required: false
@@ -23,20 +21,15 @@ inputs:
     description: 'path to python package to build, relative to repository root'
     required: false
     default: ''
-  pip-wheel-args:
-    description: 'extra arguments to pass to the `pip wheel` command, passed paths are relative to `package-path`'
-    required: false
-    default: '-w ./dist --no-deps'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.python-versions }}
-    - ${{ inputs.build-requirements }}
+    - ${{ inputs.py-version }}
+    - ${{ inputs.py-pep-425 }}
     - ${{ inputs.system-packages }}
     - ${{ inputs.pre-build-command }}
     - ${{ inputs.package-path }}
-    - ${{ inputs.pip-wheel-args}}
 branding:
   icon: 'package'
   color: 'green'
