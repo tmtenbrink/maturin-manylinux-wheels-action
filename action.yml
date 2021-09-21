@@ -1,5 +1,5 @@
-name: 'Python wheels manylinux build'
-description: 'Build manylinux wheels for a Python package'
+name: 'maturin-manylinux-wheels-action'
+description: 'Build manylinux wheels for a Python maturin (PyO3) package'
 inputs:
   py-version:
     description: 'python version to target (e.g. 3.9)'
